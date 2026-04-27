@@ -31,7 +31,7 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? company.url).toString();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Consent Mode v2 default — must run BEFORE GTM. -->
+    <!-- Consent Mode v2 default — must run BEFORE gtag config. -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -59,13 +59,13 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? company.url).toString();
       } catch (e) {}
     </script>
 
-    <!-- Google Tag Manager -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PL4WXNQR');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) — GA4 -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-8Y02K1TBFD"></script>
+    <script is:inline>
+      gtag('js', new Date());
+      gtag('config', 'G-8Y02K1TBFD');
+    </script>
+    <!-- End Google tag -->
 
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -101,11 +101,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     )}
   </head>
   <body class="antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PL4WXNQR"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-ink-900 focus:text-white focus:px-4 focus:py-2">Przejdź do treści</a>
     <Header />
     <main id="main">
