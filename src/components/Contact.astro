@@ -1,10 +1,6 @@
 ---
 import { contact, company } from "../content/site";
 import Icon from "./Icon.astro";
-
-// Web3Forms access key — replace with the real key after registering at https://web3forms.com.
-// Free tier: 250 mails/month. The key is public-safe by design.
-const WEB3FORMS_KEY = "REPLACE_WITH_WEB3FORMS_KEY";
 ---
 
 <section id="kontakt" class="section">
@@ -20,12 +16,9 @@ const WEB3FORMS_KEY = "REPLACE_WITH_WEB3FORMS_KEY";
         id="contact-form"
         class="lg:col-span-3 rounded-2xl border border-ink-200 bg-white p-6 lg:p-8 grid gap-5"
         method="POST"
-        action="https://api.web3forms.com/submit"
+        action="/api/contact"
         enctype="multipart/form-data"
       >
-        <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
-        <input type="hidden" name="subject" value="Nowe zapytanie z panum.pl" />
-        <input type="hidden" name="from_name" value="panum.pl" />
         <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
 
         <div class="grid sm:grid-cols-2 gap-5">
@@ -129,6 +122,9 @@ const WEB3FORMS_KEY = "REPLACE_WITH_WEB3FORMS_KEY";
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!status) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn?.setAttribute("disabled", "true");
     status.textContent = "Wysyłam…";
     status.className = "text-sm text-ink-600";
 
@@ -136,7 +132,7 @@ const WEB3FORMS_KEY = "REPLACE_WITH_WEB3FORMS_KEY";
     try {
       const res = await fetch(form.action, { method: "POST", body: data });
       const json = await res.json().catch(() => ({}));
-      if (res.ok && json.success !== false) {
+      if (res.ok && json.success === true) {
         status.textContent = successMsg;
         status.className = "text-sm text-emerald-600 font-medium";
         form.reset();
@@ -147,6 +143,8 @@ const WEB3FORMS_KEY = "REPLACE_WITH_WEB3FORMS_KEY";
     } catch {
       status.textContent = errorMsg;
       status.className = "text-sm text-red-600 font-medium";
+    } finally {
+      submitBtn?.removeAttribute("disabled");
     }
   });
 </script>

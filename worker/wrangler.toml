@@ -1,0 +1,18 @@
+name = "panum-contact"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+
+# Bind to panum.pl/api/* — Cloudflare intercepts before tunnel
+[[routes]]
+pattern = "panum.pl/api/*"
+zone_name = "panum.pl"
+
+[[routes]]
+pattern = "www.panum.pl/api/*"
+zone_name = "panum.pl"
+
+[vars]
+# Public, non-secret config. Secrets via `wrangler secret put`.
+TO_EMAIL = "kontakt@panum.pl"
+FROM_EMAIL = "Panum <kontakt@send.panum.pl>"
+ORIGIN_ALLOW = "https://panum.pl,https://www.panum.pl"
