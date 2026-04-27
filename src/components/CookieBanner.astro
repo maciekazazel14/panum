@@ -1,0 +1,91 @@
+---
+// Lightweight cookie consent banner integrated with Google Consent Mode v2.
+// Default consent (denied) is set in Base.astro <head> before GTM loads.
+// This component renders the banner UI and updates Consent Mode on user choice.
+---
+
+<div
+  id="cookie-banner"
+  class="fixed inset-x-0 bottom-0 z-50 hidden translate-y-full transition-transform duration-300 ease-out data-[show=true]:translate-y-0"
+  role="dialog"
+  aria-label="Zgoda na pliki cookies"
+  aria-live="polite"
+>
+  <div class="container-prose pb-3 sm:pb-5">
+    <div class="rounded-t-2xl sm:rounded-2xl bg-white ring-1 ring-ink-200 shadow-2xl shadow-ink-900/10 p-5 sm:p-6 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
+      <div class="text-sm text-ink-700 leading-relaxed">
+        <p class="font-display text-base font-semibold text-ink-900 mb-1">Pliki cookies</p>
+        <p>
+          Używamy plików cookies do analizy ruchu (Google Analytics) — pomaga nam to ulepszać stronę.
+          Cookies niezbędne do działania serwisu są zawsze włączone.
+          Szczegóły w <a href="/polityka-prywatnosci" class="text-brand-600 underline underline-offset-2 hover:text-brand-700">polityce prywatności</a>.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-stretch">
+        <button type="button" data-cc-action="reject" class="btn btn-ghost text-sm">
+          Tylko niezbędne
+        </button>
+        <button type="button" data-cc-action="accept" class="btn btn-primary text-sm">
+          Akceptuj wszystkie
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'panum.consent';
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    function show() {
+      banner.classList.remove('hidden');
+      // next frame so the transition triggers
+      requestAnimationFrame(function () {
+        banner.dataset.show = 'true';
+      });
+    }
+    function hide() {
+      banner.dataset.show = 'false';
+      setTimeout(function () { banner.classList.add('hidden'); }, 320);
+    }
+
+    // Show only if no choice stored yet.
+    var existing = null;
+    try { existing = localStorage.getItem(KEY); } catch (e) {}
+    if (!existing) show();
+
+    // Allow re-opening from anywhere via window.openCookieBanner()
+    window.openCookieBanner = show;
+
+    function updateConsent(analytics) {
+      window.dataLayer = window.dataLayer || [];
+      function g(){ window.dataLayer.push(arguments); }
+      g('consent', 'update', {
+        analytics_storage: analytics ? 'granted' : 'denied',
+        ad_user_data:      analytics ? 'granted' : 'denied',
+        ad_personalization: analytics ? 'granted' : 'denied'
+      });
+    }
+
+    function persist(analytics) {
+      try {
+        localStorage.setItem(KEY, JSON.stringify({
+          analytics: analytics,
+          ts: Date.now(),
+          v: 1
+        }));
+      } catch (e) {}
+    }
+
+    banner.querySelectorAll('[data-cc-action]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var accept = btn.getAttribute('data-cc-action') === 'accept';
+        persist(accept);
+        updateConsent(accept);
+        hide();
+      });
+    });
+  })();
+</script>

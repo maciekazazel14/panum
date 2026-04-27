@@ -49,7 +49,15 @@ const year = new Date().getFullYear();
   <div class="border-t border-ink-200">
     <div class="container-prose py-5 text-xs text-ink-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
       <span>© {year} {company.name}. Wszelkie prawa zastrzeżone.</span>
-      <span>Strona zbudowana z dbałością o prywatność i wydajność.</span>
+      <button type="button" id="cookie-settings-link" class="text-left sm:text-right hover:text-ink-700 underline-offset-2 hover:underline">
+        Ustawienia cookies
+      </button>
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  document.getElementById('cookie-settings-link')?.addEventListener('click', function () {
+    if (typeof window.openCookieBanner === 'function') window.openCookieBanner();
+  });
+</script>
