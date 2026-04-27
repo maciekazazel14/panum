@@ -13,8 +13,8 @@ interface Props {
 }
 
 const {
-  title = `${company.name} — Druk 3D na zamówienie | Faktura VAT | Wycena w 4h`,
-  description = "Profesjonalny druk 3D dla firm i osób prywatnych. Bambu Lab P1S, FV, realizacja 2–5 dni, wycena w 4h. Prototypy, części zamienne, modele.",
+  title = `${company.name} — Druk 3D na zamówienie | Wycena w 4h`,
+  description = "Profesjonalny druk 3D dla firm i osób prywatnych. Realizacja 2–5 dni, wycena w 4h. Prototypy, części zamienne, modele i akcesoria.",
   ogImage = "/og-image.jpg",
   canonical,
   jsonLd,
@@ -35,7 +35,7 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? company.url).toString();
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="druk 3d, druk 3d na zamówienie, druk 3d faktura vat, modelowanie 3d, prototypy, części zamienne, bambu lab, panum" />
+    <meta name="keywords" content="druk 3d, druk 3d na zamówienie, modelowanie 3d, prototypy, części zamienne, druk fdm, panum" />
     <meta name="theme-color" content="#0f172a" />
 
     <meta property="og:type" content="website" />

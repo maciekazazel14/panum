@@ -3,7 +3,7 @@
 
 export const company = {
   name: "Panum",
-  tagline: "Druk 3D na zamówienie | Modelowanie 3D | Faktura VAT",
+  tagline: "Druk 3D na zamówienie | Modelowanie 3D",
   email: "kontakt@panum.pl",
   phone: "+48 793 143 199",
   phoneHref: "tel:+48793143199",
@@ -27,16 +27,16 @@ export const nav = [
 ];
 
 export const hero = {
-  eyebrow: "Druk 3D • Wycena w 4h • Faktura VAT",
+  eyebrow: "Druk 3D • Wycena w 4h • Realizacja 2–5 dni",
   h1: "Druk 3D na zamówienie dla firm i osób prywatnych",
-  sub: "Profesjonalny wydruk z Bambu Lab P1S. Faktura VAT, realizacja w 2–5 dni roboczych, wycena w ciągu 4 godzin.",
+  sub: "Wycena w ciągu 4 godzin, realizacja w 2–5 dni roboczych. Prototypy, części techniczne, modele i akcesoria — z PLA, PETG, ASA, TPU lub nylonu z włóknem węglowym.",
   ctaPrimary: { label: "Wyślij plik do wyceny", href: "#kontakt" },
   ctaSecondary: { label: "Zadzwoń", href: "tel:+48793143199" },
   badges: [
-    "Faktura VAT",
-    "Realizacja 2–5 dni",
     "Wycena w 4h",
-    "Bambu Lab P1S",
+    "Realizacja 2–5 dni",
+    "Druk od 1 szt.",
+    "Wysyłka InPost",
   ],
 };
 
@@ -67,9 +67,9 @@ export const why = {
   title: "Wiarygodny partner do druku 3D",
   items: [
     {
-      title: "Faktura VAT od ręki",
-      desc: "Jesteśmy czynnym VAT-owcem. Faktura wystawiana automatycznie po zaksięgowaniu płatności.",
-      icon: "receipt",
+      title: "Druk już od jednej sztuki",
+      desc: "Realizujemy małe zlecenia tak samo jak duże. Minimalna wartość zamówienia: 60 PLN netto.",
+      icon: "cube",
     },
     {
       title: "Szybka wycena",
@@ -77,13 +77,13 @@ export const why = {
       icon: "clock",
     },
     {
-      title: "Profesjonalny sprzęt",
-      desc: "Drukarka Bambu Lab P1S. Wysoka jakość, dokładność do 0,1 mm, szybkie tempo druku.",
+      title: "Wysoka jakość druku",
+      desc: "Dokładność do 0,1 mm, wysokość warstwy od 0,12 mm. Materiały dobrane do zastosowania — od PLA po nylon z włóknem węglowym.",
       icon: "printer",
     },
     {
       title: "Lokalnie i bezpiecznie",
-      desc: "Wysyłka InPost lub odbiór osobisty. Pakowane bezpiecznie z folią i wypełnieniem.",
+      desc: "Wysyłka InPost, kurier lub odbiór osobisty. Pakowane z folią i wypełnieniem.",
       icon: "shield",
     },
   ],
@@ -103,7 +103,7 @@ export const process = {
     },
     {
       title: "Akceptacja i płatność",
-      desc: "BLIK, przelew, karta. Faktura VAT na firmę lub paragon.",
+      desc: "BLIK, przelew lub karta. Dokument zakupu po zaksięgowaniu wpłaty.",
     },
     {
       title: "Druk i wysyłka",
@@ -133,7 +133,7 @@ export const materials = {
 export const modeling = {
   eyebrow: "Modelowanie 3D",
   title: "Nie masz pliku? Zaprojektujemy.",
-  body: "Pracujemy w Blenderze i Plasticity — od prostych obudów po skomplikowane organiczne kształty. Stawka: od 80 PLN netto/h, wycena projektu po krótkim briefie.",
+  body: "Od prostych obudów po skomplikowane organiczne kształty — projektujemy modele od zera. Stawka od 80 PLN netto/h, wycena projektu po krótkim briefie.",
   cta: { label: "Opisz projekt", href: "#kontakt?type=modeling" },
 };
 
@@ -157,10 +157,6 @@ export const faq = {
       a: "STL, 3MF, STEP, OBJ. Jeśli masz inny format — napisz, większość plików CAD jesteśmy w stanie przetworzyć.",
     },
     {
-      q: "Czy wystawiacie fakturę VAT?",
-      a: "Tak, jesteśmy czynnym podatnikiem VAT. Faktura wystawiana automatycznie po opłaceniu zlecenia.",
-    },
-    {
       q: "Ile trwa realizacja?",
       a: "Standardowo 2–5 dni roboczych od akceptacji wyceny. Pilne zlecenia (24h) za dopłatą 50%.",
     },
@@ -182,7 +178,7 @@ export const faq = {
     },
     {
       q: "Czy oferujecie modelowanie od zera?",
-      a: "Tak. Pracujemy w Blenderze i Plasticity. Stawka od 80 PLN netto/h, wycena indywidualna.",
+      a: "Tak. Stawka od 80 PLN netto/h, wycena projektu po krótkim briefie.",
     },
   ],
 };
