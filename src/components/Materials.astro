@@ -1,0 +1,43 @@
+---
+import { materials } from "../content/site";
+---
+
+<section id="materialy" class="section bg-ink-50">
+  <div class="container-prose">
+    <div class="max-w-2xl">
+      <span class="eyebrow">{materials.eyebrow}</span>
+      <h2 class="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">{materials.title}</h2>
+    </div>
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2 overflow-hidden rounded-xl border border-ink-200 bg-white">
+        <div class="hidden md:grid grid-cols-12 items-center gap-4 px-6 py-3 bg-ink-100 text-xs font-semibold uppercase tracking-wider text-ink-600">
+          <div class="col-span-2">Materiał</div>
+          <div class="col-span-7">Zastosowanie</div>
+          <div class="col-span-3 text-right">Cena</div>
+        </div>
+        <ul class="divide-y divide-ink-200">
+          {materials.rows.map((row) => (
+            <li class="grid md:grid-cols-12 items-center gap-2 md:gap-4 px-6 py-4">
+              <div class="md:col-span-2 font-display text-base font-semibold text-ink-900">{row.name}</div>
+              <div class="md:col-span-7 text-sm text-ink-600">{row.use}</div>
+              <div class="md:col-span-3 md:text-right text-sm font-medium text-ink-800">{row.price}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="rounded-xl border border-ink-200 bg-white p-6">
+        <h3 class="font-display text-lg font-semibold text-ink-900">Parametry druku</h3>
+        <dl class="mt-4 space-y-3">
+          {materials.params.map((p) => (
+            <div class="flex flex-col">
+              <dt class="text-xs font-semibold uppercase tracking-wide text-ink-500">{p.label}</dt>
+              <dd class="text-sm text-ink-800">{p.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>

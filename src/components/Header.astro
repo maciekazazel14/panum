@@ -1,0 +1,71 @@
+---
+import { company, nav } from "../content/site";
+---
+
+<header class="sticky top-0 z-40 border-b border-ink-200/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70">
+  <div class="container-prose flex h-16 items-center justify-between gap-6">
+    <a href="/" class="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-ink-900">
+      <span class="grid h-8 w-8 place-items-center rounded-md bg-ink-900 text-white">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 7l9-4 9 4-9 4-9-4z" />
+          <path d="M3 7v10l9 4 9-4V7" />
+          <path d="M12 11v10" />
+        </svg>
+      </span>
+      {company.name}
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-600" aria-label="Główna nawigacja">
+      {nav.map((item) => (
+        <a href={item.href} class="hover:text-ink-900 transition-colors">{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="hidden md:flex items-center gap-3">
+      <a href={company.phoneHref} class="text-sm font-medium text-ink-700 hover:text-ink-900">{company.phone}</a>
+      <a href="#kontakt" class="btn btn-primary">Wyślij plik</a>
+    </div>
+
+    <button
+      type="button"
+      id="nav-toggle"
+      class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-ink-700 hover:bg-ink-100"
+      aria-label="Otwórz menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 6h16" />
+        <path d="M4 12h16" />
+        <path d="M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-nav" class="md:hidden hidden border-t border-ink-200 bg-white">
+    <nav class="container-prose flex flex-col py-3 text-base" aria-label="Menu mobilne">
+      {nav.map((item) => (
+        <a href={item.href} class="py-2 text-ink-700 hover:text-ink-900">{item.label}</a>
+      ))}
+      <a href={company.phoneHref} class="py-2 text-ink-700 hover:text-ink-900">{company.phone}</a>
+      <a href="#kontakt" class="btn btn-primary mt-2 self-start">Wyślij plik</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-nav");
+  toggle?.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    menu?.classList.toggle("hidden");
+  });
+  // Close menu after navigation on mobile.
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      toggle?.setAttribute("aria-expanded", "false");
+    })
+  );
+</script>

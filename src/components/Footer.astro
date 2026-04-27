@@ -1,0 +1,55 @@
+---
+import { company, footer } from "../content/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-ink-200 bg-ink-50 mt-16">
+  <div class="container-prose py-12 grid gap-10 md:grid-cols-3">
+    <div>
+      <div class="flex items-center gap-2 font-display text-xl font-bold text-ink-900">
+        <span class="grid h-8 w-8 place-items-center rounded-md bg-ink-900 text-white">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 7l9-4 9 4-9 4-9-4z" />
+            <path d="M3 7v10l9 4 9-4V7" />
+            <path d="M12 11v10" />
+          </svg>
+        </span>
+        {company.name}
+      </div>
+      <p class="mt-3 text-sm text-ink-600 max-w-sm">{footer.blurb}</p>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold text-ink-900 uppercase tracking-wide">Nawigacja</h2>
+      <ul class="mt-4 space-y-2 text-sm text-ink-600">
+        {footer.links.map((link) => (
+          <li><a href={link.href} class="hover:text-ink-900">{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold text-ink-900 uppercase tracking-wide">Kontakt</h2>
+      <ul class="mt-4 space-y-2 text-sm text-ink-600">
+        <li><a href={`mailto:${company.email}`} class="hover:text-ink-900">{company.email}</a></li>
+        <li><a href={company.phoneHref} class="hover:text-ink-900">{company.phone}</a></li>
+        <li>{company.hours}</li>
+      </ul>
+      <h2 class="mt-6 text-sm font-semibold text-ink-900 uppercase tracking-wide">Dane firmy</h2>
+      <ul class="mt-4 space-y-1 text-sm text-ink-600">
+        <li>{company.owner}</li>
+        <li>{company.addressLine}</li>
+        <li>{company.addressCity}</li>
+        <li>NIP: {company.nip}</li>
+        {company.regon && <li>REGON: {company.regon}</li>}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-ink-200">
+    <div class="container-prose py-5 text-xs text-ink-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <span>© {year} {company.name}. Wszelkie prawa zastrzeżone.</span>
+      <span>Strona zbudowana z dbałością o prywatność i wydajność.</span>
+    </div>
+  </div>
+</footer>

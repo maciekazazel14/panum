@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  updated?: string;
+  intro?: string;
+}
+const { title, updated, intro } = Astro.props;
+---
+
+<section class="section">
+  <div class="container-prose max-w-3xl">
+    <header class="mb-10 border-b border-ink-200 pb-6">
+      <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">{title}</h1>
+      {updated && <p class="mt-2 text-sm text-ink-500">Ostatnia aktualizacja: {updated}</p>}
+      {intro && <p class="mt-4 text-ink-600 leading-relaxed">{intro}</p>}
+    </header>
+
+    <div class="prose-content text-ink-700 leading-relaxed [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-ink-900 [&_h2]:mt-10 [&_h2]:mb-3 [&_h3]:font-display [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-ink-900 [&_h3]:mt-6 [&_h3]:mb-2 [&_p]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-4 [&_li]:my-1 [&_a]:text-brand-600 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-brand-700 [&_strong]:text-ink-900 [&_strong]:font-semibold">
+      <slot />
+    </div>
+  </div>
+</section>

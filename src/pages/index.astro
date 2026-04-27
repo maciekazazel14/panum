@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Why from "../components/Why.astro";
+import Process from "../components/Process.astro";
+import Materials from "../components/Materials.astro";
+import Modeling from "../components/Modeling.astro";
+import FAQ from "../components/FAQ.astro";
+import Contact from "../components/Contact.astro";
+import { company, faq } from "../content/site";
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": company.url,
+  name: company.name,
+  description: "Druk 3D na zamówienie i modelowanie 3D dla firm i osób prywatnych.",
+  url: company.url,
+  telephone: company.phone,
+  email: company.email,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "PL",
+  },
+  priceRange: "$$",
+  openingHoursSpecification: [{
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "18:00",
+  }],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.items.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<Base jsonLd={[localBusiness, faqJsonLd]}>
+  <Hero />
+  <Services />
+  <Why />
+  <Process />
+  <Materials />
+  <Modeling />
+  <FAQ />
+  <Contact />
+</Base>

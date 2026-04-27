@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://panum.pl/sitemap-index.xml

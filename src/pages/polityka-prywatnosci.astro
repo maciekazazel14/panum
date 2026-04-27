@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+import Prose from "../components/Prose.astro";
+import { company } from "../content/site";
+
+const title = "Polityka prywatności";
+const description = "Polityka prywatności Panum — zasady przetwarzania danych osobowych użytkowników serwisu panum.pl.";
+---
+
+<Base title={`${title} — ${company.name}`} description={description}>
+  <Prose title={title} updated="2026-04-27">
+    <h2>1. Administrator danych</h2>
+    <p>Administratorem danych osobowych jest <strong>{company.owner}</strong>, prowadzący działalność gospodarczą pod firmą „Panum”, z siedzibą {company.addressLine}, {company.addressCity}, NIP {company.nip}{company.regon ? `, REGON ${company.regon}` : ""}. Kontakt w sprawach ochrony danych: {company.email}.</p>
+
+    <h2>2. Cele i podstawy przetwarzania</h2>
+    <p>Dane osobowe przetwarzamy w następujących celach:</p>
+    <ul>
+      <li>udzielenie odpowiedzi na zapytanie przesłane formularzem kontaktowym (podstawa: art. 6 ust. 1 lit. f RODO — uzasadniony interes administratora w postaci prowadzenia korespondencji),</li>
+      <li>zawarcie i wykonanie umowy o świadczenie usług (podstawa: art. 6 ust. 1 lit. b RODO),</li>
+      <li>wystawianie faktur VAT i prowadzenie ksiąg rachunkowych (podstawa: art. 6 ust. 1 lit. c RODO — obowiązek prawny wynikający z ustawy o rachunkowości i ustawy o VAT),</li>
+      <li>obrona przed roszczeniami i dochodzenie roszczeń (podstawa: art. 6 ust. 1 lit. f RODO).</li>
+    </ul>
+
+    <h2>3. Zakres danych</h2>
+    <p>Przetwarzamy dane podawane dobrowolnie w formularzu kontaktowym (imię i nazwisko / nazwa firmy, e-mail, telefon, treść wiadomości, załączony plik) oraz dane niezbędne do wystawienia faktury (NIP, adres siedziby).</p>
+
+    <h2>4. Okres przechowywania</h2>
+    <ul>
+      <li>Dane z formularza kontaktowego, jeśli nie doszło do zawarcia umowy: do 6 miesięcy od ostatniego kontaktu.</li>
+      <li>Dane związane z zawartymi umowami: przez okres trwania umowy oraz przez okres przedawnienia roszczeń (zwykle 6 lat).</li>
+      <li>Dane na fakturach: przez okres wymagany przepisami podatkowymi (5 lat od końca roku obrachunkowego).</li>
+    </ul>
+
+    <h2>5. Odbiorcy danych</h2>
+    <p>Dane mogą być przekazywane:</p>
+    <ul>
+      <li>biuru rachunkowemu (księgowość, rozliczenia VAT),</li>
+      <li>dostawcom usług IT (hosting, poczta e-mail, formularz kontaktowy),</li>
+      <li>operatorom pocztowym i kurierom realizującym dostawy,</li>
+      <li>operatorom płatności,</li>
+      <li>organom państwowym, gdy wymaga tego przepis prawa.</li>
+    </ul>
+
+    <h2>6. Prawa użytkownika</h2>
+    <p>Przysługują Państwu prawa do: dostępu do danych, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, sprzeciwu wobec przetwarzania, cofnięcia zgody (jeśli była podstawą przetwarzania) oraz wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (uodo.gov.pl).</p>
+
+    <h2>7. Przekazywanie poza EOG</h2>
+    <p>Co do zasady nie przekazujemy danych poza Europejski Obszar Gospodarczy. Jeśli korzystamy z dostawców usług spoza EOG (np. hosting), dane są zabezpieczone standardowymi klauzulami umownymi zatwierdzonymi przez Komisję Europejską.</p>
+
+    <h2>8. Pliki cookies</h2>
+    <p>Serwis panum.pl wykorzystuje wyłącznie niezbędne pliki cookies (sesyjne, techniczne) zapewniające prawidłowe działanie strony. Jeśli w przyszłości wdrożymy narzędzia analityczne lub marketingowe, pojawi się stosowny baner zgody.</p>
+
+    <h2>9. Bezpieczeństwo</h2>
+    <p>Stosujemy odpowiednie środki techniczne i organizacyjne zapewniające bezpieczeństwo danych: szyfrowanie połączenia (HTTPS), kontrolowany dostęp do plików klientów, regularne aktualizacje oprogramowania.</p>
+
+    <h2>10. Kontakt</h2>
+    <p>W sprawach związanych z przetwarzaniem danych osobowych prosimy o kontakt: <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+  </Prose>
+</Base>

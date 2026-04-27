@@ -1,0 +1,54 @@
+---
+import Base from "../layouts/Base.astro";
+import Prose from "../components/Prose.astro";
+import { company } from "../content/site";
+
+const title = "Regulamin świadczenia usług";
+const description = "Regulamin świadczenia usług druku 3D i modelowania 3D przez Panum.";
+---
+
+<Base title={`${title} — ${company.name}`} description={description}>
+  <Prose title={title} updated="2026-04-27" intro="Niniejszy regulamin określa zasady świadczenia usług przez Panum. Prosimy o zapoznanie się z treścią przed złożeniem zamówienia.">
+    <h2>1. Postanowienia ogólne</h2>
+    <p>Usługodawcą jest <strong>{company.owner}</strong>, prowadzący jednoosobową działalność gospodarczą pod firmą „Panum”, z siedzibą {company.addressLine}, {company.addressCity}, NIP {company.nip}{company.regon ? `, REGON ${company.regon}` : ""} (dalej „Usługodawca”).</p>
+    <p>Kontakt: {company.email}, {company.phone}, godziny pracy: {company.hours}.</p>
+
+    <h2>2. Definicje</h2>
+    <ul>
+      <li><strong>Klient</strong> — osoba fizyczna, osoba prawna lub jednostka organizacyjna składająca zamówienie.</li>
+      <li><strong>Zamówienie</strong> — oświadczenie woli Klienta zmierzające do zawarcia umowy o świadczenie usługi druku 3D lub modelowania 3D.</li>
+      <li><strong>Plik</strong> — plik cyfrowy (STL, 3MF, STEP, OBJ lub inny uzgodniony format) przesłany przez Klienta w celu wykonania wydruku.</li>
+      <li><strong>Wycena</strong> — propozycja ceny, terminu i parametrów realizacji przedstawiana przez Usługodawcę.</li>
+    </ul>
+
+    <h2>3. Zasady składania zamówień</h2>
+    <p>Zamówienie składa się przez formularz kontaktowy na stronie panum.pl, e-mailem lub telefonicznie. Zamówienie powinno zawierać Plik (lub opis projektu w przypadku usługi modelowania), preferowany materiał oraz dane kontaktowe.</p>
+
+    <h2>4. Wycena i akceptacja</h2>
+    <p>Usługodawca przedstawia Wycenę w ciągu 4 godzin w dni robocze (pn–pt 8:00–18:00). Wycena jest ważna 14 dni i zawiera: cenę netto i brutto, planowany termin realizacji, materiał, parametry druku oraz koszt dostawy. Realizacja rozpoczyna się po pisemnej (e-mail lub formularz) akceptacji Wyceny przez Klienta i, w zależności od ustaleń, po opłaceniu zaliczki lub całości zamówienia.</p>
+
+    <h2>5. Płatności</h2>
+    <p>Akceptowane formy płatności: BLIK, przelew tradycyjny, płatność kartą. Faktura VAT wystawiana jest po zaksięgowaniu płatności (Usługodawca jest czynnym podatnikiem VAT). Klient może otrzymać paragon zamiast faktury, jeśli zaznaczy taką opcję.</p>
+
+    <h2>6. Realizacja zlecenia</h2>
+    <p>Standardowy czas realizacji wynosi 2–5 dni roboczych od akceptacji Wyceny i potwierdzenia płatności. Pilne zlecenia (24h) są realizowane za dopłatą 50% wartości zamówienia, po wcześniejszym uzgodnieniu dostępności.</p>
+    <p>Maksymalny obszar druku: 256 × 256 × 256 mm. Wysokość warstwy: 0,12 / 0,20 / 0,28 mm. Stosowane materiały: PLA, PETG, ASA, TPU, PA-CF.</p>
+
+    <h2>7. Dostawa i odbiór</h2>
+    <p>Możliwe formy dostawy: paczkomat InPost, kurier, odbiór osobisty po umówieniu. Koszt dostawy każdorazowo określany jest w Wycenie.</p>
+
+    <h2>8. Reklamacje</h2>
+    <p>Reklamacje należy zgłaszać na adres {company.email} w terminie 14 dni od otrzymania zamówienia. Zgłoszenie powinno zawierać numer zamówienia, opis wady oraz zdjęcia. Usługodawca rozpatrzy reklamację w ciągu 14 dni roboczych. W przypadku uznania reklamacji Usługodawca naprawi lub wymieni przedmiot albo zwróci równowartość ceny.</p>
+    <p><strong>Ograniczenia odpowiedzialności:</strong> Usługodawca nie ponosi odpowiedzialności za błędy w plikach STL/3MF dostarczonych przez Klienta (np. wady geometrii, nieprawidłowe wymiary, niedomknięte powierzchnie). Klient odpowiada za poprawność pliku i jego zgodność z zamierzonym zastosowaniem.</p>
+
+    <h2>9. Prawa autorskie i odmowa druku</h2>
+    <p>Klient oświadcza, że posiada wszelkie prawa do drukowanych modeli (autorskie prawa majątkowe lub odpowiednią licencję) i że ich druk nie narusza praw osób trzecich. Usługodawca zastrzega sobie prawo do odmowy druku modeli niezgodnych z prawem, naruszających prawa autorskie (np. modele chronione przez Disney, Marvel, Lucasfilm i inne podmioty), zawierających elementy broni palnej, treści obraźliwych lub naruszających dobre obyczaje.</p>
+
+    <h2>10. RODO i ochrona danych</h2>
+    <p>Zasady przetwarzania danych osobowych opisuje <a href="/polityka-prywatnosci">Polityka prywatności</a>.</p>
+
+    <h2>11. Postanowienia końcowe</h2>
+    <p>W sprawach nieuregulowanych niniejszym Regulaminem stosuje się przepisy prawa polskiego, w tym Kodeksu cywilnego i ustawy o prawach konsumenta. Spory rozpatruje sąd właściwy dla siedziby Usługodawcy (w przypadku przedsiębiorców) lub sąd powszechny zgodnie z przepisami (w przypadku konsumentów).</p>
+    <p>Usługodawca zastrzega prawo do zmiany Regulaminu. Zamówienia złożone przed datą wejścia w życie zmian realizowane są na zasadach dotychczasowych.</p>
+  </Prose>
+</Base>
