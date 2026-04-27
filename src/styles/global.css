@@ -137,4 +137,26 @@
     text-transform: uppercase;
     color: var(--color-brand-600);
   }
+
+  .gcode-path {
+    stroke-dasharray: var(--len);
+    stroke-dashoffset: var(--len);
+    animation: gcode-draw 9s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.55));
+  }
+}
+
+@keyframes gcode-draw {
+  0%   { stroke-dashoffset: var(--len); opacity: 1; }
+  72%  { stroke-dashoffset: 0;          opacity: 1; }
+  85%  { stroke-dashoffset: 0;          opacity: 1; }
+  95%  { stroke-dashoffset: 0;          opacity: 0; }
+  100% { stroke-dashoffset: var(--len); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gcode-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
 }
